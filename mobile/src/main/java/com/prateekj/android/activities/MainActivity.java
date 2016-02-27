@@ -1,8 +1,6 @@
 package com.prateekj.android.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +18,6 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-import static com.prateekj.android.activities.SettingActivity.SYSTEM_SETTING_PREFS;
 import static com.prateekj.android.utils.SharedPrefsUtils.SERVER_IP;
 
 public class MainActivity extends AppCompatActivity {

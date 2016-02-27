@@ -1,7 +1,5 @@
 package com.prateekj.android.activities;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +9,9 @@ import android.widget.EditText;
 import com.prateekj.android.R;
 import com.prateekj.android.utils.SharedPrefsUtils;
 
-public class SettingActivity extends AppCompatActivity {
+import static com.prateekj.android.utils.SharedPrefsUtils.SERVER_IP;
 
-  public static final String SERVER_IP = "SERVER_IP";
-  public static final String SYSTEM_SETTING_PREFS = "SYSTEM_SETTING_PREFS";
+public class SettingActivity extends AppCompatActivity {
 
   private EditText serverIpContainer;
   private View saveIpButton;
@@ -28,8 +25,16 @@ public class SettingActivity extends AppCompatActivity {
 
   private void initializeViews() {
     serverIpContainer = (EditText) findViewById(R.id.server_ip_container);
+    setIpIfAlreadySaved();
     saveIpButton = findViewById(R.id.save_ip_button);
     saveIpButton.setOnClickListener(saveIp());
+  }
+
+  private void setIpIfAlreadySaved() {
+    SharedPrefsUtils sharedPrefsUtils = new SharedPrefsUtils(this);
+    String url = sharedPrefsUtils.getString(SERVER_IP);
+    if (url != null)
+      serverIpContainer.setText(url);
   }
 
   @NonNull
