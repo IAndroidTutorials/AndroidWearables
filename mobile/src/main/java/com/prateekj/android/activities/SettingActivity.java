@@ -1,13 +1,15 @@
-package com.prateekj.android;
+package com.prateekj.android.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.prateekj.android.R;
+import com.prateekj.android.utils.SharedPrefsUtils;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -35,10 +37,8 @@ public class SettingActivity extends AppCompatActivity {
     return new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        SharedPreferences sharedPreferences = SettingActivity.this.getSharedPreferences(SYSTEM_SETTING_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(SERVER_IP, serverIpContainer.getText().toString());
-        editor.commit();
+        SharedPrefsUtils sharedPrefs = new SharedPrefsUtils(SettingActivity.this);
+        sharedPrefs.saveIp(serverIpContainer.getText().toString());
       }
     };
   }

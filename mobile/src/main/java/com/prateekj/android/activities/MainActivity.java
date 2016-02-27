@@ -1,4 +1,4 @@
-package com.prateekj.android;
+package com.prateekj.android.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.prateekj.android.R;
+import com.prateekj.android.utils.SharedPrefsUtils;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -18,7 +20,8 @@ import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 
-import static com.prateekj.android.SettingActivity.SYSTEM_SETTING_PREFS;
+import static com.prateekj.android.activities.SettingActivity.SYSTEM_SETTING_PREFS;
+import static com.prateekj.android.utils.SharedPrefsUtils.SERVER_IP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private String getUrlForPosts() {
-    SharedPreferences sharedPreferences = getSharedPreferences(SYSTEM_SETTING_PREFS, Context.MODE_PRIVATE);
-    String url = sharedPreferences.getString(SettingActivity.SERVER_IP, null);
+    SharedPrefsUtils sharedPrefs = new SharedPrefsUtils(this);
+    String url = sharedPrefs.getString(SERVER_IP);
     return String.format("http://%s:3000/posts/", url);
   }
 
