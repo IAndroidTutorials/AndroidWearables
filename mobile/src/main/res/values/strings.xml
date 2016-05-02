@@ -1,8 +1,11 @@
 <resources>
   <string name="app_name">WearablePractise</string>
   <string name="fetch_posts">Fetch Posts</string>
+  <string name="notifications">Notifications</string>
+  <string name="generate_notifications">Generate Notification</string>
   <string name="settings">Settings</string>
   <string name="setting_description">System Settings</string>
   <string name="server_ip">Server IP</string>
   <string name="set_ip">Set IP</string>
+  <string name="twitter_uri">http://mobile.twitter.com</string>
 </resources>

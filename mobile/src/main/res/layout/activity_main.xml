@@ -17,6 +17,12 @@
         android:text="Hello World!"/>
     <Button
         android:layout_width="match_parent"
+        android:id="@+id/notification"
+        android:onClick="notifications"
+        android:text="@string/notifications"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_width="match_parent"
         android:id="@+id/click_me"
         android:onClick="fetchPosts"
         android:text="@string/fetch_posts"

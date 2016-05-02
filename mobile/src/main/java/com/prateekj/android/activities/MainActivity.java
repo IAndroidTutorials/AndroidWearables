@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
     return super.onCreateOptionsMenu(menu);
   }
 
+  public void notifications(View view) {
+    Intent intent = new Intent(this, NotificationActivity.class);
+    startActivity(intent);
+  }
+
   public void fetchPosts(View view) {
     OkHttpClient client = new OkHttpClient();
     Request request = new Request.Builder()
