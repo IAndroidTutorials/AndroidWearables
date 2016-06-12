@@ -39,13 +39,13 @@ public class NotificationActivity extends AppCompatActivity {
 
   public void wearableSpecificNotifications(View view) {
     PendingIntent pendingIntent = getPendingIntentForText("Wearable Specific Notification");
-    Action mapAction = new Action(R.drawable.common_full_open_on_phone, "Wearable Action", pendingIntent);
+    Action mapAction = new Action(R.drawable.common_full_open_on_phone, "Wearable Only Action", pendingIntent);
     WearableExtender extender = new WearableExtender().
         addAction(mapAction);
 
     NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
         .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
-        .setContentTitle("My Wearable Notification")
+        .setContentTitle("Wearable Only Action")
         .extend(extender)
         .setAutoCancel(true);
     NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
