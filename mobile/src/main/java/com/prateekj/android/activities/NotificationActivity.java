@@ -27,7 +27,8 @@ public class NotificationActivity extends AppCompatActivity {
     NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
         .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
         .setContentTitle("My Notification")
-        .setContentIntent(PendingIntent.getActivity(this, 0, intent, FLAG_UPDATE_CURRENT));
+        .setContentIntent(PendingIntent.getActivity(this, 0, intent, FLAG_UPDATE_CURRENT))
+        .setAutoCancel(true);
     NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
     mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
   }
