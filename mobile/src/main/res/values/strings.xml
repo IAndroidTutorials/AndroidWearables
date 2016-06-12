@@ -8,4 +8,5 @@
   <string name="server_ip">Server IP</string>
   <string name="set_ip">Set IP</string>
   <string name="twitter_uri">http://mobile.twitter.com</string>
+  <string name="generate_wearable_notifications">Generate Wearable Notification</string>
 </resources>
