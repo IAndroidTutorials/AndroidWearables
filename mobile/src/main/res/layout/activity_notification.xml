@@ -24,4 +24,10 @@
         android:text="@string/generate_wearable_notifications"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:onClick="bigStyleNotifications"
+        android:text="@string/big_style_notification"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

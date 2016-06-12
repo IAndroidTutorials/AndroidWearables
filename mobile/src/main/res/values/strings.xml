@@ -9,4 +9,13 @@
   <string name="set_ip">Set IP</string>
   <string name="twitter_uri">http://mobile.twitter.com</string>
   <string name="generate_wearable_notifications">Generate Wearable Notification</string>
+  <string name="big_style_notification">Big Style Notification</string>
+  <string name="big_style_description">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod \n
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \n
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \n
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse \n
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non \n
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \n
+  </string>
 </resources>

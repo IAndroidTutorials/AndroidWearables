@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Action;
+import android.support.v4.app.NotificationCompat.BigTextStyle;
 import android.support.v4.app.NotificationCompat.WearableExtender;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -41,15 +42,32 @@ public class NotificationActivity extends AppCompatActivity {
   public void wearableSpecificNotifications(View view) {
     PendingIntent pendingIntent = getPendingIntentForText("Wearable Specific Notification");
     Action mapAction = new Action(R.drawable.common_full_open_on_phone, "Wearable Only Action", pendingIntent);
-    WearableExtender extender = new WearableExtender().
-        setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_pause)).
-        setContentIcon(R.drawable.ic_media_pause).
-        addAction(mapAction);
+    WearableExtender extender = new WearableExtender()
+        .setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_pause))
+        .setContentIcon(R.drawable.ic_media_pause)
+        .addAction(mapAction);
 
     NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
         .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
         .setContentTitle("Wearable Only Action")
         .extend(extender)
+        .setAutoCancel(true);
+    NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
+    mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
+  }
+
+  public void bigStyleNotifications(View view) {
+    PendingIntent pendingIntent = getPendingIntentForText("Big Style Notification");
+    Action action = new Action(R.drawable.common_full_open_on_phone, "Big Style Notification Action", pendingIntent);
+
+    BigTextStyle bigTextStyle = new BigTextStyle();
+    bigTextStyle.bigText(getString(R.string.big_style_description));
+
+    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+        .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+        .setContentTitle("Big Style Title")
+        .addAction(action)
+        .setStyle(bigTextStyle)
         .setAutoCancel(true);
     NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
     mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
