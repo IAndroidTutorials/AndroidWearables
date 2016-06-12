@@ -2,6 +2,7 @@ package com.prateekj.android.activities;
 
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
@@ -41,6 +42,8 @@ public class NotificationActivity extends AppCompatActivity {
     PendingIntent pendingIntent = getPendingIntentForText("Wearable Specific Notification");
     Action mapAction = new Action(R.drawable.common_full_open_on_phone, "Wearable Only Action", pendingIntent);
     WearableExtender extender = new WearableExtender().
+        setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_pause)).
+        setContentIcon(R.drawable.ic_media_pause).
         addAction(mapAction);
 
     NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
