@@ -11,6 +11,7 @@
   <string name="generate_wearable_notifications">Generate Wearable Notification</string>
   <string name="big_style_notification">Big Style Notification</string>
   <string name="voice_reply_notification">Voice Reply Notification</string>
+  <string name="page_notification">Page Notification</string>
   <string name="big_style_description">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod \n
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \n

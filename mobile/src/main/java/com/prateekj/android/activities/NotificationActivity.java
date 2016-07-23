@@ -1,5 +1,6 @@
 package com.prateekj.android.activities;
 
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -38,8 +39,7 @@ public class NotificationActivity extends AppCompatActivity {
         .setContentTitle("My Notification")
         .setContentIntent(pendingIntent)
         .setAutoCancel(true);
-    NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
-    mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
+    issueNotification(notificationBuilder.build());
   }
 
   public void wearableSpecificNotifications(View view) {
@@ -55,8 +55,7 @@ public class NotificationActivity extends AppCompatActivity {
         .setContentTitle("Wearable Only Action")
         .extend(extender)
         .setAutoCancel(true);
-    NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
-    mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
+    issueNotification(notificationBuilder.build());
   }
 
   public void bigStyleNotifications(View view) {
@@ -72,8 +71,7 @@ public class NotificationActivity extends AppCompatActivity {
         .addAction(action)
         .setStyle(bigTextStyle)
         .setAutoCancel(true);
-    NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
-    mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
+    issueNotification(notificationBuilder.build());
   }
 
   public void voiceReplyNotification(View view) {
@@ -97,8 +95,28 @@ public class NotificationActivity extends AppCompatActivity {
         .setContentTitle("Voice Reply Action")
         .extend(extender)
         .setAutoCancel(true);
+    issueNotification(notificationBuilder.build());
+  }
+
+  public void pageNotification(View view) {
+    Notification secondPageNotification = new NotificationCompat.Builder(this)
+        .setSmallIcon(R.drawable.ic_cast_dark)
+        .setContentTitle("Page 2")
+        .setContentText("A lot of text....")
+        .build();
+
+    Notification firstPageNotification = new NotificationCompat.Builder(this)
+        .setSmallIcon(R.drawable.ic_cast_dark)
+        .setContentTitle("Page 1")
+        .setContentText("Short Message")
+        .extend(new WearableExtender().addPage(secondPageNotification))
+        .build();
+    issueNotification(firstPageNotification);
+  }
+
+  private void issueNotification(Notification firstPageNotification) {
     NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
-    mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
+    mNotificationManager.notify(UNIQUE_ID, firstPageNotification);
   }
 
   @NonNull
