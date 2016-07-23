@@ -10,13 +10,16 @@ import android.support.v4.app.NotificationCompat.Action;
 import android.support.v4.app.NotificationCompat.BigTextStyle;
 import android.support.v4.app.NotificationCompat.WearableExtender;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.RemoteInput;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.prateekj.android.R;
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
+import static com.prateekj.android.activities.NotificationClickActivity.EXTRA_VOICE_REPLY_KEY;
 import static com.prateekj.android.activities.NotificationClickActivity.SOURCE_TEXT;
+import static com.prateekj.android.activities.NotificationClickActivity.VOICE_REPLY;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -73,10 +76,42 @@ public class NotificationActivity extends AppCompatActivity {
     mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
   }
 
+  public void voiceReplyNotification(View view) {
+    RemoteInput remoteInput = new RemoteInput.Builder(EXTRA_VOICE_REPLY_KEY)
+        .setLabel("Please describe your query")
+        .build();
+
+    PendingIntent pendingIntent = getPendingIntentForVoiceReply();
+
+    Action action = new Action.Builder(R.drawable.common_full_open_on_phone, "Voice Reply Action", pendingIntent)
+        .addRemoteInput(remoteInput)
+        .build();
+
+    WearableExtender extender = new WearableExtender()
+        .setBackground(BitmapFactory.decodeResource(getResources(), R.drawable.ic_media_pause))
+        .setContentIcon(R.drawable.ic_media_pause)
+        .addAction(action);
+
+    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+        .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+        .setContentTitle("Voice Reply Action")
+        .extend(extender)
+        .setAutoCancel(true);
+    NotificationManagerCompat mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
+    mNotificationManager.notify(UNIQUE_ID, notificationBuilder.build());
+  }
+
   @NonNull
   private PendingIntent getPendingIntentForText(String text) {
     Intent intent = new Intent(this, NotificationClickActivity.class);
     intent.putExtra(SOURCE_TEXT, text);
+    return PendingIntent.getActivity(this, 0, intent, FLAG_UPDATE_CURRENT);
+  }
+
+  @NonNull
+  private PendingIntent getPendingIntentForVoiceReply() {
+    Intent intent = new Intent(this, NotificationClickActivity.class);
+    intent.putExtra(VOICE_REPLY, true);
     return PendingIntent.getActivity(this, 0, intent, FLAG_UPDATE_CURRENT);
   }
 }

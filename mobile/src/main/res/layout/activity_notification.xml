@@ -30,4 +30,10 @@
         android:text="@string/big_style_notification"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:onClick="voiceReplyNotification"
+        android:text="@string/voice_reply_notification"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
