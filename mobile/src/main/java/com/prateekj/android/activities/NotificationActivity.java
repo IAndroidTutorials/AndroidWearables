@@ -17,9 +17,9 @@ import android.view.View;
 import com.prateekj.android.R;
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
-import static com.prateekj.android.activities.NotificationClickActivity.EXTRA_VOICE_REPLY_KEY;
-import static com.prateekj.android.activities.NotificationClickActivity.SOURCE_TEXT;
-import static com.prateekj.android.activities.NotificationClickActivity.VOICE_REPLY;
+import static com.prateekj.android.activities.NotificationResultActivity.EXTRA_VOICE_REPLY_KEY;
+import static com.prateekj.android.activities.NotificationResultActivity.SOURCE_TEXT;
+import static com.prateekj.android.activities.NotificationResultActivity.VOICE_REPLY;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -103,14 +103,14 @@ public class NotificationActivity extends AppCompatActivity {
 
   @NonNull
   private PendingIntent getPendingIntentForText(String text) {
-    Intent intent = new Intent(this, NotificationClickActivity.class);
+    Intent intent = new Intent(this, NotificationResultActivity.class);
     intent.putExtra(SOURCE_TEXT, text);
     return PendingIntent.getActivity(this, 0, intent, FLAG_UPDATE_CURRENT);
   }
 
   @NonNull
   private PendingIntent getPendingIntentForVoiceReply() {
-    Intent intent = new Intent(this, NotificationClickActivity.class);
+    Intent intent = new Intent(this, NotificationResultActivity.class);
     intent.putExtra(VOICE_REPLY, true);
     return PendingIntent.getActivity(this, 0, intent, FLAG_UPDATE_CURRENT);
   }

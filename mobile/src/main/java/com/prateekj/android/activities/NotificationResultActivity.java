@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.prateekj.android.R;
 
 @SuppressWarnings("ALL")
-public class NotificationClickActivity extends AppCompatActivity{
+public class NotificationResultActivity extends AppCompatActivity{
 
   public static final String SOURCE_TEXT = "source_text";
   public static final String VOICE_REPLY = "voice_reply";
